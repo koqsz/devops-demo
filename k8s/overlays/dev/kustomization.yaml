@@ -6,9 +6,9 @@ resources:
 - ingress.yaml
 
 images:
-- name: backend-image
-  newName: ghcr.io/koqsz/devops-demo-backend
-  newTag: 47feabd3e1923ad2057a1ab53e6c27a5900aad63
-- name: frontend-image
-  newName: ghcr.io/koqsz/devops-demo-frontend
-  newTag: 47feabd3e1923ad2057a1ab53e6c27a5900aad63
+  - name: frontend-image
+    newName: ghcr.io/OWNER/devops-demo-frontend
+    newTag: latest
+  - name: backend-image
+    newName: ghcr.io/OWNER/devops-demo-backend
+    newTag: latest
