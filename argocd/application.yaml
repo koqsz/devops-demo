@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-demo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: devops-demo
+  source:
+    repoURL: https://github.com/OWNER/devops-demo.git
+    targetRevision: main
+    path: k8s/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devops-demo
+  syncPolicy:
+    automated:
+      prune: true        # Törli az olyan erőforrásokat, amik már nincsenek Git-ben
+      selfHeal: true     # Visszaállítja a manuális változtatásokat
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

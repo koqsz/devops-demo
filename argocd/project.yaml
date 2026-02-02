@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: devops-demo
+  namespace: argocd
+spec:
+  description: DevOps Demo Project - Feladatkezelő alkalmazás
+  sourceRepos:
+    - 'https://github.com/OWNER/devops-demo.git'
+  destinations:
+    - namespace: devops-demo
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
