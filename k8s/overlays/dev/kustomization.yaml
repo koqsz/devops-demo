@@ -7,8 +7,8 @@ resources:
 
 images:
   - name: frontend-image
-    newName: ghcr.io/OWNER/devops-demo-frontend
+    newName: ghcr.io/koqsz/devops-demo-frontend
     newTag: latest
   - name: backend-image
-    newName: ghcr.io/OWNER/devops-demo-backend
+    newName: ghcr.io/koqsz/devops-demo-backend
     newTag: latest
