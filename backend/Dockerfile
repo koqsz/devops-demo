@@ -15,13 +15,14 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Non-root user for security
-USER node
-
-COPY --from=builder --chown=node:node /app/package.json /app/package-lock.json* ./
+COPY --from=builder /app/package.json /app/package-lock.json* ./
 RUN npm ci --omit=dev
 
-COPY --from=builder --chown=node:node /app/dist/ ./dist/
+COPY --from=builder /app/dist/ ./dist/
+
+# Non-root user for security
+RUN chown -R node:node /app
+USER node
 
 EXPOSE 3000
 
