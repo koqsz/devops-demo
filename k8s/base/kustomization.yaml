@@ -15,5 +15,7 @@ resources:
   - database/secret.yaml
   - database/configmap.yaml
 
-commonLabels:
-  app.kubernetes.io/part-of: devops-demo
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: devops-demo
+    includeSelectors: true

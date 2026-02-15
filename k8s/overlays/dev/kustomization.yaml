@@ -5,6 +5,12 @@ resources:
 - ../../base
 - ingress.yaml
 
+patches:
+  - target:
+      kind: StatefulSet
+      name: database
+    path: database-emptydir-patch.yaml
+
 images:
   - name: frontend-image
     newName: ghcr.io/koqsz/devops-demo-frontend
