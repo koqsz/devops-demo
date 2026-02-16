@@ -3,12 +3,11 @@ kind: Kustomization
 
 resources:
 - ../../base
-- ingress.yaml
 
 images:
   - name: frontend-image
-    newName: ghcr.io/koqsz/devops-demo-frontend
+    newName: devops-demo-frontend
     newTag: latest
   - name: backend-image
-    newName: ghcr.io/koqsz/devops-demo-backend
+    newName: devops-demo-backend
     newTag: latest
