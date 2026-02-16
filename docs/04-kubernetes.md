@@ -78,6 +78,7 @@ A Kustomize egy Kubernetes-natív konfigurációkezelő eszköz:
 kubectl kustomize k8s/overlays/dev
 
 # Közvetlen telepítés
+
 kubectl apply -k k8s/overlays/dev
 ```
 

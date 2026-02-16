@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+
+images:
+- name: backend-image
+  newName: ghcr.io/koqsz/devops-demo-backend
+  newTag: 0cc03e805ece8ab9e67c702d32979dbee29bb7b3
+- name: frontend-image
+  newName: ghcr.io/koqsz/devops-demo-frontend
+  newTag: 0cc03e805ece8ab9e67c702d32979dbee29bb7b3
