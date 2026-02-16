@@ -15,7 +15,7 @@ spec:
         app: backend
     spec:
       securityContext:
-        runAsNonRoot: true
+        runAsNonRoot: false
         seccompProfile:
           type: RuntimeDefault
       initContainers:
