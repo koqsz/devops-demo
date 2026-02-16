@@ -7,7 +7,7 @@ resources:
 images:
 - name: backend-image
   newName: ghcr.io/koqsz/devops-demo-backend
-  newTag: 7f10fab2db58c8e01e04b224795796c3f3f3c8f6
+  newTag: ccda8fca6b4e13dae4db44d1e570e68f7c3cc1ac
 - name: frontend-image
   newName: ghcr.io/koqsz/devops-demo-frontend
-  newTag: 7f10fab2db58c8e01e04b224795796c3f3f3c8f6
+  newTag: ccda8fca6b4e13dae4db44d1e570e68f7c3cc1ac
