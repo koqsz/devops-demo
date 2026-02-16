@@ -6,12 +6,12 @@ resources:
 - ingress.yaml
 
 images:
-- name: frontend-image
-  newName: ghcr.io/koqsz/devops-demo-frontend
-  newTag: latest
 - name: backend-image
   newName: ghcr.io/koqsz/devops-demo-backend
-  newTag: latest
+  newTag: 3571382c34e5414f1e5ffc6d99d3e894b7fdd1bc
+- name: frontend-image
+  newName: ghcr.io/koqsz/devops-demo-frontend
+  newTag: 3571382c34e5414f1e5ffc6d99d3e894b7fdd1bc
 
 patches:
 - path: patches/frontend-deployment.yaml
