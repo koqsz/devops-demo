@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: frontend
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
