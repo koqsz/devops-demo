@@ -101,7 +101,7 @@ jobs:
 
       - name: Update image tags in dev overlay
         run: |
-          cd k8s/overlays/dev
+          cd google-cloud/k8s
           kustomize edit set image \
             frontend-image=${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
           kustomize edit set image \
@@ -111,7 +111,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add k8s/
+          git add google-cloud/k8s/
           git diff --staged --quiet || \
             git commit -m "chore: update image tags to ${{ github.sha }}"
           git push
