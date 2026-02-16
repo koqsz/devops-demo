@@ -8,9 +8,11 @@ const app = express();
 const BACKEND_URL = process.env.BACKEND_URL || 'http://backend:3000';
 
 // API proxy a backend felé
-app.use('/api', createProxyMiddleware({ target: BACKEND_URL, changeOrigin: true }));
-app.use('/health', createProxyMiddleware({ target: BACKEND_URL, changeOrigin: true }));
-app.use('/ready', createProxyMiddleware({ target: BACKEND_URL, changeOrigin: true }));
+app.use(createProxyMiddleware({
+  target: BACKEND_URL,
+  changeOrigin: true,
+  pathFilter: ['/api', '/health', '/ready'],
+}));
 
 // Statikus fájlok
 app.use(express.static(join(__dirname, 'dist')));
