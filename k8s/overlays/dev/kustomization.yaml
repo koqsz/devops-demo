@@ -6,16 +6,9 @@ resources:
 
 images:
 - name: backend-image
-<<<<<<< HEAD
   newName: devops-demo-backend
   newTag: latest
 - name: frontend-image
   newName: devops-demo-frontend
   newTag: latest
-=======
-  newName: ghcr.io/koqsz/devops-demo-backend
-  newTag: ccda8fca6b4e13dae4db44d1e570e68f7c3cc1ac
-- name: frontend-image
-  newName: ghcr.io/koqsz/devops-demo-frontend
-  newTag: ccda8fca6b4e13dae4db44d1e570e68f7c3cc1ac
->>>>>>> a9ea76f3d96715f16165b82389c069b347bb98e5
+
