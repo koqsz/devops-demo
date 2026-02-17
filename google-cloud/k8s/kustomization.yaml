@@ -8,10 +8,10 @@ resources:
 images:
 - name: backend-image
   newName: ghcr.io/koqsz/devops-demo-backend
-  newTag: 3571382c34e5414f1e5ffc6d99d3e894b7fdd1bc
+  newTag: 074811d15bcbc25099e0a6b9a739f1ab3c819ca0
 - name: frontend-image
   newName: ghcr.io/koqsz/devops-demo-frontend
-  newTag: 3571382c34e5414f1e5ffc6d99d3e894b7fdd1bc
+  newTag: 074811d15bcbc25099e0a6b9a739f1ab3c819ca0
 
 patches:
 - path: patches/frontend-deployment.yaml
