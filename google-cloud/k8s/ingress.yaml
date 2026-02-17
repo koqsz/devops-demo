@@ -4,7 +4,7 @@ metadata:
   name: devops-demo-ingress
   annotations:
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: "devops-demo-ip"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   defaultBackend:
     service:
@@ -12,7 +12,8 @@ spec:
       port:
         number: 5000
   rules:
-    - http:
+    - host: y.devanta.hu
+      http:
         paths:
           - path: /
             pathType: Prefix
