@@ -13,7 +13,7 @@ export function Header() {
     <header className="header">
       <div className="header-content">
         <h1>Feladatkezelő</h1>
-        <span className="subtitle">DevOps Demo Alkalmazás 5</span>
+        <span className="subtitle">DevOps Demo Alkalmazás 10</span>
       </div>
       {info && (
         <div className="header-info">
