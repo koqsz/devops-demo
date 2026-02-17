@@ -12,7 +12,7 @@ spec:
       port:
         number: 5000
   rules:
-    - host: y.devanta.hu
+    - host: y.devanta.eu
       http:
         paths:
           - path: /
