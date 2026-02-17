@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-gke-ingress
+  namespace: argocd
+  annotations:
+    # GKE natív Google Cloud Load Balancer
+    kubernetes.io/ingress.class: "gce"
+    # Managed SSL tanúsítvány (Google-managed, automatikus megújítás)
+    networking.gke.io/managed-certificates: "argocd-ssl-cert"
+    # HTTP → HTTPS átirányítás a Load Balancer szintjén
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+  defaultBackend:
+    service:
+      name: argocd-server
+      port:
+        number: 80
+  rules:
+    - host: argocd.pelda.com  # <-- Ide írd a valós ArgoCD domain nevet
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+---
+# Google Managed SSL tanúsítvány az ArgoCD domainhez
+# A GKE automatikusan beszerzi és megújítja a Let's Encrypt tanúsítványt
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: argocd-ssl-cert
+  namespace: argocd
+spec:
+  domains:
+    - argocd.pelda.com  # <-- Ide írd a valós ArgoCD domain nevet
+---
+# Az ArgoCD server service-t NodePort-ra kell patch-elni GKE Ingress-hez
+# (GCE Ingress nem tud ClusterIP mögé proxyzni)
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server
+  namespace: argocd
+spec:
+  type: NodePort

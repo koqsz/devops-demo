@@ -23,7 +23,7 @@ Az ArgoCD egy GitOps folyamatos telepítési (Continuous Deployment) eszköz Kub
 kubectl create namespace argocd
 
 # ArgoCD telepítése (legfrissebb stabil verzió)
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml --server-side --force-conflicts
 
 # Várakozás a pod-ok indulására
 kubectl wait --for=condition=ready pod \

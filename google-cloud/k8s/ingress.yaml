@@ -12,7 +12,7 @@ spec:
       port:
         number: 5000
   rules:
-    - host: y.devanta.eu
+    - host: kiskutya.com <--Ide írd a valós domain nevet
       http:
         paths:
           - path: /

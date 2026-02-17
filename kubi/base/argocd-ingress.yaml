@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-ingress
+  namespace: argocd
+  annotations:
+    # Az nginx Ingress Controller kezeli az SSL terminálást
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    # ArgoCD gRPC és HTTP2 támogatás
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: argocd.pelda.com  # <-- Ide írd a valós ArgoCD domain nevet
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 443
