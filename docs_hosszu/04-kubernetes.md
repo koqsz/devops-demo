@@ -117,10 +117,10 @@ spec:
 ```
 
 ### Telepítés GKE-re
-
-```bash
 # Előfeltétel: gcloud CLI konfigurálva, kubectl a GKE clusterhez csatlakoztatva
 # gcloud container clusters get-credentials <CLUSTER-NEV> --zone <ZONE> --project <PROJECT-ID>
+```bash
+
 
 # Image tagek beállítása
 # Szerkeszd: google-cloud/k8s/kustomization.yaml
