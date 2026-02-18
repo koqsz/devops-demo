@@ -21,6 +21,8 @@ spec:
         fsGroup: 2000
         seccompProfile:
           type: RuntimeDefault
+      imagePullSecrets:
+        - name: ghcr-secret
       initContainers:
         - name: wait-for-db
           image: busybox:1.36

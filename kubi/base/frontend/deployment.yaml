@@ -21,6 +21,8 @@ spec:
         fsGroup: 2000
         seccompProfile:
           type: RuntimeDefault
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: frontend
           image: frontend-image
