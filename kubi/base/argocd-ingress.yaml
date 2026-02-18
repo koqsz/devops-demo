@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: argocd.pelda.com  # <-- Ide írd a valós ArgoCD domain nevet
+    - host: argocd.devanta.eu
       http:
         paths:
           - path: /
