@@ -164,21 +164,37 @@ kubectl apply -k google-cloud/k8s            # GKE
 
 ## GHCR Image Pull Secret
 
-Ha privát container image-eket használsz:
+A `ghcr-secret` Secret **kötelező** – enélkül a pod-ok nem tudják lehúzni az image-eket a GHCR-ről, és az alábbi hibaüzenetet kapod:
+
+```
+Warning  FailedToRetrieveImagePullSecret  kubelet
+Unable to retrieve some image pull secrets (ghcr-secret);
+attempting to pull the image may not succeed.
+```
+
+> **Fontos:** A Secret-et manuálisan kell létrehozni – nem kerülhet Git-be, mert érzékeny hitelesítési adatot tartalmaz.
+
+### Secret létrehozása
 
 ```bash
-# GitHub Personal Access Token (PAT) létrehozása szükséges
-# GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
-# Szükséges scope: read:packages
+# 1. GitHub Personal Access Token (PAT) létrehozása:
+#    GitHub → Settings → Developer settings →
+#    Personal access tokens → Tokens (classic)
+#    Szükséges scope: read:packages
 
+# 2. Namespace létrehozása (ha még nem létezik)
 kubectl create namespace devops-demo
 
+# 3. Secret létrehozása
 kubectl create secret docker-registry ghcr-secret \
   --namespace=devops-demo \
   --docker-server=ghcr.io \
   --docker-username=GITHUB_USER \
   --docker-password=GITHUB_PAT \
   --docker-email=EMAIL
+
+# 4. Ellenőrzés
+kubectl get secret ghcr-secret -n devops-demo
 ```
 
 ---
